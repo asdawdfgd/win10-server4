@@ -1,9 +1,14 @@
-FROM dockur/windows
+# غيرنا المصدر لـ ghcr.io عشان يهرب من حظر دوكر
+FROM ghcr.io/dockur/windows:latest
+
 ENV VERSION="10"
 ENV USERNAME="TOOLBOXLAP"
 ENV PASSWORD="admin@123"
+
+# ركز هنا: دي إعدادات الويندوز الداخلية
 ENV RAM_SIZE="8G"
 ENV CPU_CORES="4"
 ENV DISK_SIZE="64G"
 ENV ACCEPT_EULA="Y"
+
 EXPOSE 8006 3389
