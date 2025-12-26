@@ -1,14 +1,22 @@
-# غيرنا المصدر لـ ghcr.io عشان يهرب من حظر دوكر
 FROM ghcr.io/dockur/windows:latest
 
+# إعدادات النسخة
 ENV VERSION="10"
+
+# اسم المستخدم والباسورد
 ENV USERNAME="TOOLBOXLAP"
 ENV PASSWORD="admin@123"
 
-# ركز هنا: دي إعدادات الويندوز الداخلية
-ENV RAM_SIZE="8G"
+# أمر هام جداً عشان يشتغل على Railway بدون KVM
+ENV KVM="N"
+
+# موارد السيرفر
+ENV RAM_SIZE="16G"
 ENV CPU_CORES="4"
-ENV DISK_SIZE="64G"
+ENV DISK_SIZE="100G"
+
+# الموافقة
 ENV ACCEPT_EULA="Y"
 
+# البورتات
 EXPOSE 8006 3389
