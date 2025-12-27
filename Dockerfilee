@@ -1,22 +1,32 @@
-FROM ghcr.io/dockur/windows:latest
+# بنستخدم نسخة خفيفة جداً وسريعة (Alpine)
+FROM ghcr.io/linuxserver/webtop:alpine-xfce
 
-# إعدادات النسخة
-ENV VERSION="10"
+# --- منطقة الأوامر الجاهزة ---
+# بنحدث النظام وبننزل كل البرامج اللي هتحتاجها مرة واحدة
+RUN apk add --no-cache \
+    wine \
+    wine-mono \
+    wine-gecko \
+    python3 \
+    py3-pip \
+    chromium \
+    font-noto \
+    font-noto-arabic \
+    git \
+    wget \
+    curl \
+    unzip \
+    nano \
+    xfce4-terminal
 
-# اسم المستخدم والباسورد
-ENV USERNAME="TOOLBOXLAP"
-ENV PASSWORD="admin@123"
+# --- إعدادات البيئة ---
+# عشان Wine يشتغل مستقر
+ENV WINEARCH=win64
+# توقيت مصر
+ENV TZ=Africa/Cairo
+# صلاحيات المستخدم
+ENV PUID=1000
+ENV PGID=1000
 
-# أمر هام جداً عشان يشتغل على Railway بدون KVM
-ENV KVM="N"
-
-# موارد السيرفر
-ENV RAM_SIZE="16G"
-ENV CPU_CORES="4"
-ENV DISK_SIZE="100G"
-
-# الموافقة
-ENV ACCEPT_EULA="Y"
-
-# البورتات
-EXPOSE 8006 3389
+# بنفتح بورت 3000 للمتصفح
+EXPOSE 3000
