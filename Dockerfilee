@@ -1,32 +1,21 @@
-# بنستخدم نسخة خفيفة جداً وسريعة (Alpine)
-FROM linuxserver/webtop:alpine-xfce
+# التصحيح: لازم نكتب ghcr.io في الأول
+FROM ghcr.io/linuxserver/webtop:alpine-xfce
 
-# --- منطقة الأوامر الجاهزة ---
-# بنحدث النظام وبننزل كل البرامج اللي هتحتاجها مرة واحدة
+# باقي الكود زي ما هو
 RUN apk add --no-cache \
     wine \
     wine-mono \
     wine-gecko \
-    python3 \
-    py3-pip \
     chromium \
     font-noto \
     font-noto-arabic \
-    git \
     wget \
     curl \
     unzip \
-    nano \
-    xfce4-terminal
+    nano
 
-# --- إعدادات البيئة ---
-# عشان Wine يشتغل مستقر
-ENV WINEARCH=win64
-# توقيت مصر
-ENV TZ=Africa/Cairo
-# صلاحيات المستخدم
 ENV PUID=1000
 ENV PGID=1000
+ENV TZ=Africa/Cairo
 
-# بنفتح بورت 3000 للمتصفح
 EXPOSE 3000
