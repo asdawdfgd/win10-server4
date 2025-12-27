@@ -1,11 +1,10 @@
-# التصحيح: النسخة الـ Alpine اسمها latest
+# النسخة الخفيفة
 FROM ghcr.io/linuxserver/webtop:latest
 
-# تسطيب Wine والأدوات
+# شيلنا wine-mono و wine-gecko عشان مش مدعومين في المخزن ده
+# وتأكدنا إن باقي الأدوات موجودة
 RUN apk add --no-cache \
     wine \
-    wine-mono \
-    wine-gecko \
     chromium \
     font-noto \
     font-noto-arabic \
@@ -21,5 +20,5 @@ ENV PUID=1000
 ENV PGID=1000
 ENV TZ=Africa/Cairo
 
-# البورت
+# فتح البورت
 EXPOSE 3000
