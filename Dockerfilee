@@ -1,5 +1,5 @@
 # بنستخدم نسخة خفيفة جداً وسريعة (Alpine)
-FROM ghcr.io/linuxserver/webtop:alpine-xfce
+FROM linuxserver/webtop:alpine-xfce
 
 # --- منطقة الأوامر الجاهزة ---
 # بنحدث النظام وبننزل كل البرامج اللي هتحتاجها مرة واحدة
