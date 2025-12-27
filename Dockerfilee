@@ -1,7 +1,7 @@
-# التصحيح: لازم نكتب ghcr.io في الأول
-FROM ghcr.io/linuxserver/webtop:alpine-xfce
+# التصحيح: النسخة الـ Alpine اسمها latest
+FROM ghcr.io/linuxserver/webtop:latest
 
-# باقي الكود زي ما هو
+# تسطيب Wine والأدوات
 RUN apk add --no-cache \
     wine \
     wine-mono \
@@ -12,10 +12,14 @@ RUN apk add --no-cache \
     wget \
     curl \
     unzip \
-    nano
+    nano \
+    tar \
+    xz
 
+# إعدادات البيئة
 ENV PUID=1000
 ENV PGID=1000
 ENV TZ=Africa/Cairo
 
+# البورت
 EXPOSE 3000
