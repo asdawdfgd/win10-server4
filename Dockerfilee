@@ -1,8 +1,8 @@
-# النسخة الخفيفة
+# النسخة الخفيفة (Alpine)
 FROM ghcr.io/linuxserver/webtop:latest
 
-# شيلنا wine-mono و wine-gecko عشان مش مدعومين في المخزن ده
-# وتأكدنا إن باقي الأدوات موجودة
+# التعديل: شيلنا wine-mono و wine-gecko
+# وتأكدنا إن باقي الأدوات موجودة وصحيحة
 RUN apk add --no-cache \
     wine \
     chromium \
